@@ -1,0 +1,46 @@
+<html>
+    <body>
+        Dolannnn trumpuuu
+        <select style="width: 80;" id = "endDate">  
+            <option selected="">Select duration</option>
+            <option value="MidSem">Mid-sem</option>
+            <option value="EndSem">End-sem</option>
+          </select>
+          <button onclick="showVal()">Show value</button>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script>
+        var firebaseConfig = {
+    apiKey: "AIzaSyAitRx6veJTXjFa3r-JARhAzMhivVHS2wo",
+    authDomain: "crud-c25d0.firebaseapp.com",
+    databaseURL: "https://crud-c25d0.firebaseio.com",
+    projectId: "crud-c25d0",
+    storageBucket: "crud-c25d0.appspot.com",
+    messagingSenderId: "376741018743",
+    appId: "1:376741018743:web:c5e38b935db297a9bdda72"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src=https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script>
+       
+       function showVal(){
+       endDate=document.getElementById("endDate");
+        endDate = getSelectedOption(endDate);
+        console.log(endDate.value);
+       }
+        function  getSelectedOption(endDate){
+            var opt;
+        for ( var i = 0;i<endDate.options.length; i++ ) {
+            opt = endDate.options[i];
+            if ( opt.selected === true ) {
+                break;
+            }
+        }
+        return opt;
+        }
+        
+    </script>
+</html>

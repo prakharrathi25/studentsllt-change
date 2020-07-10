@@ -1,0 +1,39 @@
+<html>
+    <body>
+        Welcome user
+        <button onclick="logout()">signOut</button>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyAitRx6veJTXjFa3r-JARhAzMhivVHS2wo",
+    authDomain: "crud-c25d0.firebaseapp.com",
+    databaseURL: "https://crud-c25d0.firebaseio.com",
+    projectId: "crud-c25d0",
+    storageBucket: "crud-c25d0.appspot.com",
+    messagingSenderId: "376741018743",
+    appId: "1:376741018743:web:c5e38b935db297a9bdda72"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  console.log()
+    </script>
+    <script src=https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js></script>
+  
+    <script>
+        firebase.auth().onAuthStateChanged(function(user){
+    if(user){
+        console.log(user.email)
+        
+    }
+    else{
+        console.log("no user signed in")
+    }
+
+})
+function logout(){
+    window.location.href= "index.html";
+}
+    </script>
+
+</html>

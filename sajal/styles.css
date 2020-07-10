@@ -1,0 +1,410 @@
+/* COMMON */
+
+.Fullpage{
+}
+
+.MainHeading{
+	background: #393938;
+	border-radius: 25px;
+	max-height: 100px;
+}
+
+#image{
+	height: 100px;
+}
+
+.Heading{
+	font-size: 40px;
+	font-weight: 700;
+	font-family: "Playfair Display Bold";
+	text-align: center;
+}
+
+#goto{
+	text-align: center;
+}
+
+.gotomainpage{
+	text-decoration: none;
+	position: fixed;
+	bottom: 5px;
+	left: 700px;
+	background: #a8a7a7;
+	padding: 5px;
+	border-radius: 25px;
+	color: #fff;
+}
+
+.gotomainpage:hover{
+	color: red;
+	border-radius: 25px;
+}
+
+.gotomainpage:visited{
+	color: #fff;
+}
+
+/* MAIN PAGE */
+
+.container{
+	align-items: center;
+	margin: 230px;
+}
+
+#studentlogin{
+  background: #2C3E50;
+  border-radius: 25px;
+  padding: 7px 20px 7px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 700;
+}
+
+#studentlogin:active {
+  background: #5F9BE0;
+}
+
+#studentlogin:hover{
+	transition: .09s ease-in-out;
+    background: #F1C40F;
+}
+
+#facultylogin{
+  background: #1abc9c;
+  border-radius: 25px;
+  padding: 7px 20px 7px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 700;
+}
+
+#facultylogin:active {
+  background: #5F9BE0;
+}
+
+#facultylogin:hover{
+	transition: .09s ease-in-out;
+    background: #F1C40F;
+}
+
+.Logout{
+	padding: 25px;
+}
+
+/* STUDENT LOGIN PAGE */
+
+.container_login{
+	color: #1abc9c;
+	background: #2C3E50;
+	max-width: 500px;
+	border-radius: 25px;
+	padding: 45px;
+	margin-top: 100px;
+	font-size: 25px;
+}
+
+.labelinput{
+	padding: 10px;
+}
+
+.Labels{
+	font-weight: 500;
+	padding-left: 20px;
+}
+
+.Inputs{
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+.submit{
+	padding-top: 30px;
+}
+.submit_button{
+  background: #1abc9c;
+  border-radius: 25px;
+  padding: 7px 20px 7px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 0 15px;
+  text-align: center;
+}
+
+.submit_button:hover{
+  transition: .09s ease-in-out;
+  background: #c0392b;
+}
+
+.submit_button:active { 
+  background: #5F9BE0;
+}
+
+/* FACULTY LOGIN PAGE */
+
+.container_Flogin{
+	color: #2C3E50;
+	background: #1abc9c;
+	max-width: 500px;
+	border-radius: 25px;
+	padding: 30px;
+	margin-top: 100px;
+	font-size: 25px;
+}
+
+.Fsubmit_button{
+  background: #2C3E50;
+  border-radius: 25px;
+  padding: 7px 20px 7px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 0 15px;
+  text-align: center;
+}
+
+.Fsubmit_button:hover{
+  transition: .09s ease-in-out;
+  background: #c0392b;
+}
+
+.Fsumbit_button:active { 
+  background: #5F9BE0;
+}
+
+
+/* STUDENT SELECT PAGE */
+
+#Addcourse{
+  background: #1abc9c;
+  border-radius: 25px;
+  padding: 7px 35px 7px 35px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 700;
+}
+
+#Addcourse:active {
+  background: #5F9BE0;
+}
+
+#Addcourse:hover{
+	transition: .09s ease-in-out;
+    background: #F1C40F;
+}
+
+#attendancepage{
+  background: #E74C3C;
+  border-radius: 25px;
+  padding: 7px 35px 7px 35px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 700;
+}
+
+#attendancepage:active {
+  background: #5F9BE0;
+}
+
+#attendancepage:hover{
+	transition: .09s ease-in-out;
+    background: #F1C40F;
+}
+
+#studentlogout{
+	text-decoration: none;
+	position: relative;
+	background: #2b2d2f;
+	padding: 10px;
+	font-size: 20px;
+	border-radius: 25px;
+	color: #fff;
+	font-weight: 500;
+}
+
+#studentlogout:hover{
+	transition: .1s ease-in-out;
+    background: red;
+    border-radius: 10px;
+}
+
+#studentlogout:visited{
+	color: #fff;
+}
+/* STUDENT INFO PAGE */
+
+.labelinput_course{
+	font-size: 20px;
+	padding-bottom: 20px;
+}
+
+.numbers{
+	font-size: 20px;
+}
+
+.FLabels{
+	font-weight: 500;
+	padding-left: 50px;
+	font-size: 20px;
+}
+
+.class_type{
+	margin-left: 60px;
+}
+
+#Timings{
+	border-radius: 5px;
+	font-size: 20px;
+	font-size: 20px;
+}
+
+.green_division{
+	padding: 25px;
+	position: relative;
+	margin-top:10px;
+	background: #1abc9c;
+	color: black;
+	border-radius: 25px;
+}
+
+.grey_division{
+	padding: 25px;
+	position: relative;
+	margin-top: 10px;
+	background: #5F9BE0;
+	color: black;
+	border-radius: 25px;
+}
+
+.red_division{
+	padding: 25px;
+	position: relative;
+	margin-top:10px;
+	background: #E74C3C;
+	color: black;
+	border-radius: 25px;
+}
+
+.yellow_division{
+	padding: 25px;
+	position: relative;
+	margin-top: 10px;
+	background:  #F1C40F;
+	color: black;
+	border-radius: 25px;
+}
+
+#top{
+	text-decoration: none;
+	position: fixed;
+	bottom: 5px;
+	background: #a8a7a7;
+	padding: 7px;
+	border-radius: 25px;
+	color: #fff;
+}
+
+#top:hover{
+	color: red;
+	border-radius: 25px;
+}
+
+#top:visited{
+	color: #fff;
+}
+
+#coursesubmit{
+  background: #2C3E50;
+  border-radius: 25px;
+  padding: 7px 20px 7px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 700;
+  align-self: center; 
+}
+
+#coursesubmit:active {
+  background: #5F9BE0;
+}
+
+#coursesubmit:hover{
+	transition: .1s ease-in-out;
+    background: red;
+    border-radius: 10px;
+}
+
+#back{
+	text-decoration: none;
+	bottom: 10px;
+	background: #a8a7a7;
+	padding: 15px;
+	font-size: 20px;
+	border-radius: 25px;
+	color: #fff;
+	font-weight: 500;
+}
+
+#back:hover{
+	color: red;
+	border-radius: 20px;
+}
+
+#back:visited{
+	color: #fff;
+}
+
+/* FACULTY PAGE */
+
+#facultysubmit{
+  background: #2C3E50;
+  border-radius: 25px;
+  padding: 7px 20px 7px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 700;
+  align-self: center; 
+}
+
+#facultysubmit:active {
+  background: #5F9BE0;
+}
+
+#facultysubmit:hover{
+	transition: .1s ease-in-out;
+    background: red;
+    border-radius: 10px;
+}
+
+#facultylogout{
+	text-decoration: none;
+	position: relative;
+	background: #2b2d2f;
+	padding: 10px;
+	font-size: 20px;
+	border-radius: 25px;
+	color: #fff;
+	font-weight: 500;
+}
+
+#facultylogout:hover{
+	transition: .1s ease-in-out;
+    background: red;
+    border-radius: 10px;
+}
+
+#facultylogout:visited{
+	color: #fff;
+}
+

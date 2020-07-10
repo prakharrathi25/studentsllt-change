@@ -1,0 +1,209 @@
+<html>
+    <body>
+<input type = "text" id="dayOfTheWeek" placeholder="Day of the week"/>
+<button onclick="start()">click me </button>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="app.js"></script>
+    <script src=https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    
+<script>
+    
+    
+    
+    function start(){
+        
+           userName = "sn178";
+            
+var promise  = runFreeTimePromise(userName); // promises are used cause fetching data happens asynchronously but in our code each step is dependent ont he prev
+promise.then(function(freeTimings){
+    console.log(freeTimings)
+})
+
+    }
+
+ function runFreeTimePromise(user){
+    return new Promise(function(resolve,reject){
+    
+    var timings = [];
+    var freeTimings = []
+    dayOfTheWeek = document.getElementById("dayOfTheWeek").value;
+    
+    if(dayOfTheWeek == "Monday"){  
+       
+    firebase.database().ref("/Students/" + user).once("value",function(snapshot){
+        
+        snapshot.forEach(function(snap){
+            console.log(snap.key) // for each child (each course in this case)
+        if(snap.val().Monday!=null) // all timings on monday(lecture lab and tute) are pushed into timings array
+        timings.push(snap.val().Monday);
+    })
+    }).then(function(){
+        
+        freeTimings = findFreeTime(timings); // gives free timings of monday
+        resolve(freeTimings);
+    })
+}
+    else if(dayOfTheWeek == "Tuesday"){  
+        firebase.database().ref("/Students/" + user).once("value",function(snapshot){
+            snapshot.forEach(function(snapshot){
+            if(snapshot.val().Tuesday!=null)
+            timings.push(snapshot.val().Tuesday);
+        })
+        }).then(function(){
+            freeTimings = findFreeTime(timings);
+        resolve(freeTimings);
+        })
+    }
+    else if(dayOfTheWeek == "Wednesday"){  
+        firebase.database().ref("/Students/" + user).once("value",function(snapshot){
+            snapshot.forEach(function(snapshot){
+            if(snapshot.val().Wednesday!=null)
+            timings.push(snapshot.val().Wednesday);
+        })
+        }).then(function(){
+            freeTimings = findFreeTime(timings);
+        resolve(freeTimings);
+        })
+    }
+    else if(dayOfTheWeek == "Thursday"){  
+        firebase.database().ref("/Students/" + user).once("value",function(snapshot){
+            snapshot.forEach(function(snapshot){
+            if(snapshot.val().Thursday!=null)
+            timings.push(snapshot.val().Thursday);
+        })
+        }).then(function(){
+            freeTimings = findFreeTime(timings);
+        resolve(freeTimings);
+        })
+    }
+    else if(dayOfTheWeek == "Friday"){  
+        firebase.database().ref("/Students/" + user).once("value",function(snapshot){
+            snapshot.forEach(function(snapshot){
+            if(snapshot.val().Friday!=null)
+            timings.push(snapshot.val().Friday);
+        })
+        }).then(function(){
+            freeTimings = findFreeTime(timings);
+        resolve(freeTimings);
+        })
+    }
+
+
+});
+ }
+  
+function findFreeTime(timings){
+TotalSlots = 20;
+FreeTimings = [];
+
+BusyTimings = BreakTimings(timings); // breaks all the timings of the user into 1/2 hour slots
+
+start = "8:00"; end = "8:30";
+for(i=0;i<=20;++i){ // 20 strings of the form "8:00-8:30", "8:30-9:00" are compared with all the 1/2 hour slots of the user
+    tempSlotString = start + "-" + end; // form a string to compare 
+    busyTimingsCount = 0;
+    for(j=0;j<BusyTimings.length;++j){
+     if(tempSlotString!=BusyTimings[j]) 
+     ++busyTimingsCount;
+     else
+     break;
+    }
+    if(busyTimingsCount==BusyTimings.length){ // if the 1/2 hour slot doesn't match wiht any of users slots its pushed into a freetime array
+        FreeTimings.push(tempSlotString)
+    }
+    
+    start = newTime(start); // increments start time for looping
+    
+    end = newTime(end);  // increments end time for looping
+   
+    
+}
+
+return FreeTimings;
+}
+
+function BreakTimings(classTimings){
+    
+    
+    noOfClasses = classTimings.length;
+    brokenTimings = [];
+    
+    for(i=0;i<noOfClasses;++i){
+        if(classTimings[i].length ==1){
+        time = classTimings[i][0].split("-");
+        start = time[0];
+        end = time[1];
+        while(start!=end)
+        {
+            prevStart = start;
+            tempSplit = start.split(':');
+            if(tempSplit[1]=="00"){
+                tempSplit[1] = "30"
+               start = tempSplit[0] +":" + tempSplit[1];
+               tempString = prevStart+"-"+start;
+               brokenTimings.push(tempString);
+               }
+               else if(tempSplit[1]=="30"){
+                   tempSplit[1] = "00";
+                   tempSplit[0] = (parseInt(tempSplit[0]) + 1).toString();
+                  start = tempSplit[0] +":" + tempSplit[1];
+                  tempString = prevStart+"-"+start;
+                  brokenTimings.push(tempString);
+                  }
+        }
+       }
+       else if(classTimings[i].length>1)
+       {
+           for(j=0;j<classTimings[i].length;++j){
+               time = classTimings[i][j].split("-");
+               start = time[0];
+               end = time[1];
+               while(start!=end)
+               {
+                   prevStart = start;
+                   tempSplit = start.split(':');
+                   if(tempSplit[1]=="00"){
+                       tempSplit[1] = "30"
+                      start = tempSplit[0] +":" + tempSplit[1];
+                      tempString = prevStart+"-"+start;
+                      brokenTimings.push(tempString);
+                      }
+                      else if(tempSplit[1]=="30"){
+                          tempSplit[1] = "00";
+                          tempSplit[0] = (parseInt(tempSplit[0]) + 1).toString();
+                         start = tempSplit[0] +":" + tempSplit[1];
+                         tempString = prevStart+"-"+start;
+                         brokenTimings.push(tempString);
+                         }
+               }
+           }
+       }
+    }
+    return brokenTimings;
+   }
+
+   function newTime(time){
+    
+    tempSplit = time.split(':');
+    if(tempSplit[1]=="00"){
+        tempSplit[1] = "30"
+       timeNew = tempSplit[0] +":" + tempSplit[1];
+       return timeNew;
+       }
+       else if(tempSplit[1]=="30"){
+        tempSplit[1] = "00";
+        tempSplit[0] = (parseInt(tempSplit[0]) + 1).toString();
+           timeNew= tempSplit[0] +":" + tempSplit[1];
+         return timeNew;
+          }
+          return
+}
+
+
+
+
+</script>
+    </html>
+

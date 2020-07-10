@@ -1,0 +1,355 @@
+<html>
+    <body>
+<input type = "text" id="dayOfTheWeek" placeholder="Day of the week"/>
+<button onclick="start()">click me </button>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script >var firebaseConfig = {
+        apiKey: "AIzaSyAitRx6veJTXjFa3r-JARhAzMhivVHS2wo",
+        authDomain: "crud-c25d0.firebaseapp.com",
+        databaseURL: "https://crud-c25d0.firebaseio.com",
+        projectId: "crud-c25d0",
+        storageBucket: "crud-c25d0.appspot.com",
+        messagingSenderId: "376741018743",
+        appId: "1:376741018743:web:c5e38b935db297a9bdda72"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      </script>
+    <script src=https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    
+<script>
+    
+    
+    
+    function start(){
+        
+           userName = "sn178";
+            
+var promise  = runFreeTimePromise(userName); // promises are used cause fetching data happens asynchronously but in our code each step is dependent on the prev
+promise.then(function(freeTimings){
+console.log("niggaaaa")
+})
+var promise2 = checkCourse(userName);
+
+
+    }
+
+ function runFreeTimePromise(user){
+    return new Promise(function(resolve,reject){
+    
+    var timings = [];
+    var freeTimings = []
+    dayOfTheWeek = document.getElementById("dayOfTheWeek").value;
+    
+    if(dayOfTheWeek == "Monday"){  
+       
+    firebase.database().ref("/Students/" + user).once("value",function(snapshot){
+        
+        snapshot.forEach(function(snapshot){ // for each child (each course in this case)
+        if(snapshot.val().Monday!=null) // all timings on monday(lecture lab and tute) are pushed into timings array
+        timings.push(snapshot.val().Monday);
+    })
+    }).then(function(){
+        
+        freeTimings = findFreeTime(timings); // gives free timings of monday
+        resolve(freeTimings);
+    })
+}
+    else if(dayOfTheWeek == "Tuesday"){  
+        firebase.database().ref("/Students/" + user).once("value",function(snapshot){
+            snapshot.forEach(function(snapshot){
+            if(snapshot.val().Tuesday!=null)
+            timings.push(snapshot.val().Tuesday);
+        })
+        }).then(function(){
+            freeTimings = findFreeTime(timings);
+        resolve(freeTimings);
+        })
+    }
+    else if(dayOfTheWeek == "Wednesday"){  
+        firebase.database().ref("/Students/" + user).once("value",function(snapshot){
+            snapshot.forEach(function(snapshot){
+            if(snapshot.val().Wednesday!=null)
+            timings.push(snapshot.val().Wednesday);
+        })
+        }).then(function(){
+            freeTimings = findFreeTime(timings);
+        resolve(freeTimings);
+        })
+    }
+    else if(dayOfTheWeek == "Thursday"){  
+        firebase.database().ref("/Students/" + user).once("value",function(snapshot){
+            snapshot.forEach(function(snapshot){
+            if(snapshot.val().Thursday!=null)
+            timings.push(snapshot.val().Thursday);
+        })
+        }).then(function(){
+            freeTimings = findFreeTime(timings);
+        resolve(freeTimings);
+        })
+    }
+    else if(dayOfTheWeek == "Friday"){  
+        firebase.database().ref("/Students/" + user).once("value",function(snapshot){
+            snapshot.forEach(function(snapshot){
+            if(snapshot.val().Friday!=null)
+            timings.push(snapshot.val().Friday);
+        })
+        }).then(function(){
+            freeTimings = findFreeTime(timings);
+        resolve(freeTimings);
+        })
+    }
+
+
+});
+ }
+  
+function findFreeTime(timings){
+TotalSlots = 20;
+FreeTimings = [];
+
+BusyTimings = BreakTimings(timings); // breaks all the timings of the user into 1/2 hour slots
+
+start = "8:00"; end = "8:30";
+for(i=0;i<=20;++i){ // 20 strings of the form "8:00-8:30", "8:30-9:00" are compared with all the 1/2 hour slots of the user
+    tempSlotString = start + "-" + end; // form a string to compare 
+    busyTimingsCount = 0;
+    for(j=0;j<BusyTimings.length;++j){
+     if(tempSlotString!=BusyTimings[j]) 
+     ++busyTimingsCount;
+     else
+     break;
+    }
+    if(busyTimingsCount==BusyTimings.length){ // if the 1/2 hour slot doesn't match wiht any of users slots its pushed into a freetime array
+        FreeTimings.push(tempSlotString)
+    }
+    
+    start = newTime(start); // increments start time for looping
+    
+    end = newTime(end);  // increments end time for looping
+   
+    
+}
+
+return FreeTimings;
+}
+
+function BreakTimings(classTimings){ //breaks all the timings into half hour slotsu 
+    
+    
+    noOfClasses = classTimings.length;
+    brokenTimings = [];
+    
+    for(i=0;i<noOfClasses;++i){
+        if(classTimings[i].length ==1){
+        time = classTimings[i][0].split("-");
+        start = time[0];
+        end = time[1];
+        while(start!=end)
+        {
+            prevStart = start;
+            tempSplit = start.split(':');
+            if(tempSplit[1]=="00"){
+                tempSplit[1] = "30"
+               start = tempSplit[0] +":" + tempSplit[1];
+               tempString = prevStart+"-"+start;
+               brokenTimings.push(tempString);
+               }
+               else if(tempSplit[1]=="30"){
+                   tempSplit[1] = "00";
+                   tempSplit[0] = (parseInt(tempSplit[0]) + 1).toString();
+                  start = tempSplit[0] +":" + tempSplit[1];
+                  tempString = prevStart+"-"+start;
+                  brokenTimings.push(tempString);
+                  }
+        }
+       }
+       else if(classTimings[i].length>1)
+       {
+           for(j=0;j<classTimings[i].length;++j){
+               time = classTimings[i][j].split("-");
+               start = time[0];
+               end = time[1];
+               while(start!=end)
+               {
+                   prevStart = start;
+                   tempSplit = start.split(':');
+                   if(tempSplit[1]=="00"){
+                       tempSplit[1] = "30"
+                      start = tempSplit[0] +":" + tempSplit[1];
+                      tempString = prevStart+"-"+start;
+                      brokenTimings.push(tempString);
+                      }
+                      else if(tempSplit[1]=="30"){
+                          tempSplit[1] = "00";
+                          tempSplit[0] = (parseInt(tempSplit[0]) + 1).toString();
+                         start = tempSplit[0] +":" + tempSplit[1];
+                         tempString = prevStart+"-"+start;
+                         brokenTimings.push(tempString);
+                         }
+               }
+           }
+       }
+    }
+    return brokenTimings;
+   }
+
+   function newTime(time){
+    
+    tempSplit = time.split(':');
+    if(tempSplit[1]=="00"){
+        tempSplit[1] = "30"
+       timeNew = tempSplit[0] +":" + tempSplit[1];
+       return timeNew;
+       }
+       else if(tempSplit[1]=="30"){
+        tempSplit[1] = "00";
+        tempSplit[0] = (parseInt(tempSplit[0]) + 1).toString();
+           timeNew= tempSplit[0] +":" + tempSplit[1];
+         return timeNew;
+          }
+          return
+}
+
+function checkCourse(user){
+    return new Promise(function(resolve,reject){
+    courselist=[];
+    coursedays=[]; 
+    m=[],t=[],w=[],th=[],f=[]; //busy timings
+    mt=[],tt=[],wt=[],tht=[],ft=[]; //free timings
+    firebase.database().ref("/Students/" + user).once("value").then(function(snapshot){
+        snapshot.forEach(function(snapshot){ // finds busy and free times of all days of the week of the student
+            if(snapshot.val().Monday!=null)
+            m.push(snapshot.val().Monday);
+            if(snapshot.val().Tuesday!=null)
+            t.push(snapshot.val().Tuesday);
+            if(snapshot.val().Wednesday!=null)
+            w.push(snapshot.val().Wednesday);
+            if(snapshot.val().Thursday!=null)
+            th.push(snapshot.val().Thursday);
+            if(snapshot.val().Friday!=null)
+            f.push(snapshot.val().Friday);
+            mt = findFreeTime(m);
+            tt = findFreeTime(t);
+            wt = findFreeTime(w);
+            tht = findFreeTime(th);
+            ft = findFreeTime(f);
+          })
+        }).then(function(){
+            console.log(mt); 
+            console.log("found free Times")
+            coursedaycount = 1;
+            days =[];
+            
+            firebase.database().ref("/CourseList").once("value",function(snapshot){
+ 
+            snapshot.forEach(function(snapshot){ 
+                mct=[], tct=[], wct=[], thct=[], fct=[];
+                console.log(snapshot.key);
+                coursedaycount = 1;
+                days = []
+        
+            
+            
+                    
+                //For each Course
+            
+            if(snapshot.val().Monday!=null){ // what if its wednesday, then friday
+                coursedaycount++;
+                mct.push(snapshot.val().Monday); 
+                flag = course_compare(mt,mct);
+                if(flag==0){
+                    days.push("Monday");
+                }
+            }
+            if(snapshot.val().Tuesday!=null){
+                coursedaycount++;
+                tct.push(snapshot.val().Tuesday);
+                flag = course_compare(tt,tct);
+                if(flag==0){
+                    days.push("Tuesday");
+                    ;
+                }
+            }
+            if(snapshot.val().Wednesday!=null){
+                wct.push(snapshot.val().Wednesday);
+                flag = course_compare(wt,wct);
+                if(flag==0){
+                    days.push("Wednesday");
+                }
+            }
+            if(snapshot.val().Thursday!=null){
+                coursedaycount++;
+                thct.push(snapshot.val().Thursday);
+                flag = course_compare(tht,thct);
+                if(flag==0){
+                    days.push("Thursday");
+                }
+            }
+            if(snapshot.val().Friday!=null){
+                coursedaycount++;
+                fct.push(snapshot.val().Friday);
+                flag = course_compare(ft,fct);
+                if(flag==0){
+                    days.push("Friday");
+                    }
+            }
+            console.log(days)
+            if(days.length>0){
+                
+            /*for(i=0;i<days.length;i++)
+            {
+                if(snapshot.val().days[i]!=null)
+                dayflag++;
+            }
+            */
+            }
+            console.log(days.length + " " + coursedaycount)
+            if(days.length==coursedaycount)  {
+              courselist.push(snapshot.key);
+              console.log("match")  
+            
+            }
+            console.log(snapshot.key);
+
+        })
+    }).then(function(){
+    console.log(courselist)
+})
+          })
+    
+
+})//dont
+}
+
+
+
+
+
+
+
+function course_compare(freetime, coursetime){ //for each day, checks and matches course timings with free timings
+    //brokencoursetime=[];
+    brokencoursetime=BreakTimings(coursetime);
+    flag=0; // count intervals and check if it matches with course timings
+    for(i=0; i<freetime.length; i++)
+        for(j=0;j<brokencoursetime.length;j++)
+            if(freetime[i]==brokencoursetime[j]){
+                flag++;
+            }
+    if(flag==brokencoursetime.length)  
+            flag =0; // can take course
+    else
+            flag=1; // can't take course
+    return flag;
+}
+
+
+
+
+
+</script>
+    </html>
+

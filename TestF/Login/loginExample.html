@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>
+            Welcome to FreeSlotFinder, PLiss sign in
+        </title>
+    </head>
+    <body>
+        <div id = "login">
+            <h3>Login</h3>
+            <input type="email" placeholder="Email...." id = "email"/>
+            <input type="password" placeholder="Password...." id = "password"/>
+            <button type="submit" onclick="login()">Loginnnn</button>
+
+        </div>
+        <div id= "signup">
+            <h3>signUp</h3>
+            <input type="email" placeholder="Email...." id = "emailSign"/>
+            <input type="password" placeholder="Password...." id = "passwordSign"/>
+            <button type="submit" onclick="signUp()">Sign Upppp</button>
+        </div>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyAitRx6veJTXjFa3r-JARhAzMhivVHS2wo",
+    authDomain: "crud-c25d0.firebaseapp.com",
+    databaseURL: "https://crud-c25d0.firebaseio.com",
+    projectId: "crud-c25d0",
+    storageBucket: "crud-c25d0.appspot.com",
+    messagingSenderId: "376741018743",
+    appId: "1:376741018743:web:c5e38b935db297a9bdda72"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  console.log()
+    </script>
+    <script src=https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js></script>
+  
+    <script >
+firebase.auth().onAuthStateChanged(function(user){
+    if(user){
+        username = user.email;
+        
+    }
+    else{
+        console.log("no user signed in")
+    }
+
+})
+
+function login(){
+    var email = document.getElementById("email").value
+    var password = document.getElementById('password').value;
+    
+    firebase.auth().signInWithEmailAndPassword(email,password).then(function(user){
+if(user){
+    console.log(user.email);
+    window.location.href = "signedIn.html"
+}
+
+
+    }).catch(function(error){
+        window.alert("Error: " + error.message);
+    });
+
+    
+    
+}
+
+function signUp(){
+    var email = document.getElementById("emailSign").value
+    var password = document.getElementById('passwordSign').value;
+    firebase.auth().createUserWithEmailAndPassword(email,password).then(function(){
+        firebase.auth().signInWithEmailAndPassword(email,password).then(function(user){
+            if(user){
+                console.log(user.email)
+                window.location.href = "signedIn.html"
+            }
+        }).catch(function(error){
+            window.alert("Error: " + error.message);
+        })
+    }).catch(function(error){
+        window.alert("Error: " + error.message);
+    })
+}
+
+
+    </script>
+</html>

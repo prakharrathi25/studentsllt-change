@@ -1,0 +1,874 @@
+<html>
+    <body>
+<input type = "text" id="dayOfTheWeek" placeholder="Day of the week"/>
+<input type = "text" id="courseName" placeholder="Name of course"/>
+<button onclick="start()">find slots</button>
+<button onclick="signout()">sign out</button>
+<div id= "main">
+            
+    <div style="display: flex">
+     Courses
+    </div>
+    <div id = "submain">
+        <input type="text" id="courseNameForDatabase" />
+        <span style="display: block">Lecture</span>
+        <span style="display: block">Lab</span>
+        <span style="display: block">Tute</span>
+    </div>
+    <div>
+     <span style="display: block;padding-left: 5%;">Monday</span>
+     <select style="width: 80;" id="MondayStart">
+       <option selected="" >time</option>
+       
+       <option value="8:00">8:00</option>
+       <option value="8:30">8:30</option>
+       <option value="9:00">9:00</option>
+       <option value="9:30">9:30</option>
+       <option value="10:00">10:00</option>
+       <option value="10:30">10:30</option>
+       <option value="11:00">11:00</option>
+       <option value="11:30">11:30</option>
+       <option value="12:00">12:00</option>
+       <option value="12:30">12:30</option>
+       <option value="13:00">13:00</option>
+       <option value="13:30">13:30</option>
+       <option value="14:00">14:00</option>
+       <option value="14:30">14:30</option>
+       <option value="15:00">15:00</option>
+       <option value="15:30">15:30</option>
+       <option value="16:00">16:00</option>
+       <option value="16:30">16:30</option>
+       <option value="17:00">17:00</option>
+       <option value="17:30">17:30</option>
+       <option value="18:00">18:00</option>
+     </select>
+     <span>TO</span>
+     <select style="width: 80;" id="MondayEnd">
+       <option selected="">time</option>
+       <option value="8:30">8:30</option>
+       <option value="9:00">9:00</option>
+       <option value="9:30">9:30</option>
+       <option value="10:00">10:00</option>
+       <option value="10:30">10:30</option>
+       <option value="11:00">11:00</option>
+       <option value="11:30">11:30</option>
+       <option value="12:00">12:00</option>
+       <option value="12:30">12:30</option>
+       <option value="13:00">13:00</option>
+       <option value="13:30">13:30</option>
+       <option value="14:00">14:00</option>
+       <option value="14:30">14:30</option>
+       <option value="15:00">15:00</option>
+       <option value="15:30">15:30</option>
+       <option value="16:00">16:00</option>
+       <option value="16:30">16:30</option>
+       <option value="17:00">17:00</option>
+       <option value="17:30">17:30</option>
+       <option value="18:00">18:00</option>
+       <option value="18:30">18:00</option>
+       <option value="19:00">18:00</option>
+
+     </select>
+     <div>
+     <select style="width: 80" id="MondayStartLab">
+       <option selected="">time</option>
+       
+       <option value="8:00">8:00</option>
+       <option value="8:30">8:30</option>
+       <option value="9:00">9:00</option>
+       <option value="9:30">9:30</option>
+       <option value="10:00">10:00</option>
+       <option value="10:30">10:30</option>
+       <option value="11:00">11:00</option>
+       <option value="11:30">11:30</option>
+       <option value="12:00">12:00</option>
+       <option value="12:30">12:30</option>
+       <option value="13:00">13:00</option>
+       <option value="13:30">13:30</option>
+       <option value="14:00">14:00</option>
+       <option value="14:30">14:30</option>
+       <option value="15:00">15:00</option>
+       <option value="15:30">15:30</option>
+       <option value="16:00">16:00</option>
+       <option value="16:30">16:30</option>
+       <option value="17:00">17:00</option>
+       <option value="17:30">17:30</option>
+       <option value="18:00">18:00</option>
+     </select>
+     <span >TO</span>
+     <select style="width: 80" id="MondayEndLab">
+       <option selected="">time</option>
+       <option value="8:30">8:30</option>
+       <option value="9:00">9:00</option>
+       <option value="9:30">9:30</option>
+       <option value="10:00">10:00</option>
+       <option value="10:30">10:30</option>
+       <option value="11:00">11:00</option>
+       <option value="11:30">11:30</option>
+       <option value="12:00">12:00</option>
+       <option value="12:30">12:30</option>
+       <option value="13:00">13:00</option>
+       <option value="13:30">13:30</option>
+       <option value="14:00">14:00</option>
+       <option value="14:30">14:30</option>
+       <option value="15:00">15:00</option>
+       <option value="15:30">15:30</option>
+       <option value="16:00">16:00</option>
+       <option value="16:30">16:30</option>
+       <option value="17:00">17:00</option>
+       <option value="17:30">17:30</option>
+       <option value="18:00">18:00</option>
+       <option value="18:30">18:00</option>
+       <option value="19:00">18:00</option>
+
+     </select>
+
+   </div>
+
+   <div>
+       <select style="width: 80" id="MondayStartTut">
+         <option selected="">time</option>
+         
+         <option value="8:00">8:00</option>
+         <option value="8:30">8:30</option>
+         <option value="9:00">9:00</option>
+         <option value="9:30">9:30</option>
+         <option value="10:00">10:00</option>
+         <option value="10:30">10:30</option>
+         <option value="11:00">11:00</option>
+         <option value="11:30">11:30</option>
+         <option value="12:00">12:00</option>
+         <option value="12:30">12:30</option>
+         <option value="13:00">13:00</option>
+         <option value="13:30">13:30</option>
+         <option value="14:00">14:00</option>
+         <option value="14:30">14:30</option>
+         <option value="15:00">15:00</option>
+         <option value="15:30">15:30</option>
+         <option value="16:00">16:00</option>
+         <option value="16:30">16:30</option>
+         <option value="17:00">17:00</option>
+         <option value="17:30">17:30</option>
+         <option value="18:00">18:00</option>
+       </select>
+       <span >TO</span>
+       <select style="width: 80" id="MondayEndTut">
+         <option selected="">time</option>
+         <option value="8:30">8:30</option>
+         <option value="9:00">9:00</option>
+         <option value="9:30">9:30</option>
+         <option value="10:00">10:00</option>
+         <option value="10:30">10:30</option>
+         <option value="11:00">11:00</option>
+         <option value="11:30">11:30</option>
+         <option value="12:00">12:00</option>
+         <option value="12:30">12:30</option>
+         <option value="13:00">13:00</option>
+         <option value="13:30">13:30</option>
+         <option value="14:00">14:00</option>
+         <option value="14:30">14:30</option>
+         <option value="15:00">15:00</option>
+         <option value="15:30">15:30</option>
+         <option value="16:00">16:00</option>
+         <option value="16:30">16:30</option>
+         <option value="17:00">17:00</option>
+         <option value="17:30">17:30</option>
+         <option value="18:00">18:00</option>
+         <option value="18:30">18:00</option>
+         <option value="19:00">18:00</option>
+
+       </select>
+
+     </div>
+    </div>
+   <div>
+       
+
+       <div>
+           <span style="display: block;padding-left: 5%;">Tuesday</span>
+           <select style="width: 80;" id="TuesdayStart">
+             <option selected="">time</option>
+             
+             <option value="8:00">8:00</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+           </select>
+           <span>TO</span>
+           <select style="width: 80;" id="TuesdayEnd">
+             <option selected="">time</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+             <option value="18:30">18:00</option>
+             <option value="19:00">18:00</option>
+
+           </select>
+           <div>
+           <select style="width: 80" id="TuesdayStartLab">
+             <option selected="">time</option>
+             
+             <option value="8:00">8:00</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+           </select>
+           <span >TO</span>
+           <select style="width: 80" id="TuesdayEndLab">
+             <option selected="">time</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+             <option value="18:30">18:00</option>
+             <option value="19:00">18:00</option>
+
+           </select>
+
+         </div>
+
+         <div>
+             <select style="width: 80" id="TuesdayStartTut">
+               <option selected="">time</option>
+               
+               <option value="8:00">8:00</option>
+               <option value="8:30">8:30</option>
+               <option value="9:00">9:00</option>
+               <option value="9:30">9:30</option>
+               <option value="10:00">10:00</option>
+               <option value="10:30">10:30</option>
+               <option value="11:00">11:00</option>
+               <option value="11:30">11:30</option>
+               <option value="12:00">12:00</option>
+               <option value="12:30">12:30</option>
+               <option value="13:00">13:00</option>
+               <option value="13:30">13:30</option>
+               <option value="14:00">14:00</option>
+               <option value="14:30">14:30</option>
+               <option value="15:00">15:00</option>
+               <option value="15:30">15:30</option>
+               <option value="16:00">16:00</option>
+               <option value="16:30">16:30</option>
+               <option value="17:00">17:00</option>
+               <option value="17:30">17:30</option>
+               <option value="18:00">18:00</option>
+             </select>
+             <span >TO</span>
+             <select style="width: 80" id="TuesdayEndTut">
+               <option selected="">time</option>
+               <option value="8:30">8:30</option>
+               <option value="9:00">9:00</option>
+               <option value="9:30">9:30</option>
+               <option value="10:00">10:00</option>
+               <option value="10:30">10:30</option>
+               <option value="11:00">11:00</option>
+               <option value="11:30">11:30</option>
+               <option value="12:00">12:00</option>
+               <option value="12:30">12:30</option>
+               <option value="13:00">13:00</option>
+               <option value="13:30">13:30</option>
+               <option value="14:00">14:00</option>
+               <option value="14:30">14:30</option>
+               <option value="15:00">15:00</option>
+               <option value="15:30">15:30</option>
+               <option value="16:00">16:00</option>
+               <option value="16:30">16:30</option>
+               <option value="17:00">17:00</option>
+               <option value="17:30">17:30</option>
+               <option value="18:00">18:00</option>
+               <option value="18:30">18:00</option>
+               <option value="19:00">18:00</option>
+
+             </select>
+
+           </div>
+          </div>
+
+          <div>
+           <span style="display: block;padding-left: 5%;">Wednesday</span>
+           <select style="width: 80;" id="WednesdayStart">
+             <option selected="">time</option>
+             
+             <option value="8:00">8:00</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+           </select>
+           <span>TO</span>
+           <select style="width: 80;" id="WednesdayEnd">
+             <option selected="">time</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+             <option value="18:30">18:00</option>
+             <option value="19:00">18:00</option>
+
+           </select>
+           <div>
+           <select style="width: 80" id="WednesdayStartLab">
+             <option selected="">time</option>
+             
+             <option value="8:00">8:00</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+           </select>
+           <span >TO</span>
+           <select style="width: 80" id="WednesdayEndLab">
+             <option selected="">time</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+             <option value="18:30">18:00</option>
+             <option value="19:00">18:00</option>
+
+           </select>
+
+         </div>
+
+         <div>
+             <select style="width: 80" id="WednesdayStartTut">
+               <option selected="">time</option>
+               
+               <option value="8:00">8:00</option>
+               <option value="8:30">8:30</option>
+               <option value="9:00">9:00</option>
+               <option value="9:30">9:30</option>
+               <option value="10:00">10:00</option>
+               <option value="10:30">10:30</option>
+               <option value="11:00">11:00</option>
+               <option value="11:30">11:30</option>
+               <option value="12:00">12:00</option>
+               <option value="12:30">12:30</option>
+               <option value="13:00">13:00</option>
+               <option value="13:30">13:30</option>
+               <option value="14:00">14:00</option>
+               <option value="14:30">14:30</option>
+               <option value="15:00">15:00</option>
+               <option value="15:30">15:30</option>
+               <option value="16:00">16:00</option>
+               <option value="16:30">16:30</option>
+               <option value="17:00">17:00</option>
+               <option value="17:30">17:30</option>
+               <option value="18:00">18:00</option>
+             </select>
+             <span >TO</span>
+             <select style="width: 80" id="WednesdayEndTut">
+               <option selected="">time</option>
+               <option value="8:30">8:30</option>
+               <option value="9:00">9:00</option>
+               <option value="9:30">9:30</option>
+               <option value="10:00">10:00</option>
+               <option value="10:30">10:30</option>
+               <option value="11:00">11:00</option>
+               <option value="11:30">11:30</option>
+               <option value="12:00">12:00</option>
+               <option value="12:30">12:30</option>
+               <option value="13:00">13:00</option>
+               <option value="13:30">13:30</option>
+               <option value="14:00">14:00</option>
+               <option value="14:30">14:30</option>
+               <option value="15:00">15:00</option>
+               <option value="15:30">15:30</option>
+               <option value="16:00">16:00</option>
+               <option value="16:30">16:30</option>
+               <option value="17:00">17:00</option>
+               <option value="17:30">17:30</option>
+               <option value="18:00">18:00</option>
+               <option value="18:30">18:00</option>
+               <option value="19:00">18:00</option>
+
+             </select>
+
+           </div>
+          </div>
+
+
+          <div>
+           <span style="display: block;padding-left: 5%;">Thursday</span>
+           <select style="width: 80;" id="ThursdayStart">
+             <option selected="">time</option>
+             
+             <option value="8:00">8:00</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+           </select>
+           <span>TO</span>
+           <select style="width: 80;" id="ThursdayEnd">
+             <option selected="">time</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+             <option value="18:30">18:00</option>
+             <option value="19:00">18:00</option>
+
+           </select>
+           <div>
+           <select style="width: 80" id="ThursdayStartLab">
+             <option selected="">time</option>
+             
+             <option value="8:00">8:00</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+           </select>
+           <span >TO</span>
+           <select style="width: 80" id="ThursdayEndLab">
+             <option selected="">time</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+             <option value="18:30">18:00</option>
+             <option value="19:00">18:00</option>
+
+           </select>
+
+         </div>
+
+         <div>
+             <select style="width: 80" id="ThursdayStartTut">
+               <option selected="">time</option>
+               
+               <option value="8:00">8:00</option>
+               <option value="8:30">8:30</option>
+               <option value="9:00">9:00</option>
+               <option value="9:30">9:30</option>
+               <option value="10:00">10:00</option>
+               <option value="10:30">10:30</option>
+               <option value="11:00">11:00</option>
+               <option value="11:30">11:30</option>
+               <option value="12:00">12:00</option>
+               <option value="12:30">12:30</option>
+               <option value="13:00">13:00</option>
+               <option value="13:30">13:30</option>
+               <option value="14:00">14:00</option>
+               <option value="14:30">14:30</option>
+               <option value="15:00">15:00</option>
+               <option value="15:30">15:30</option>
+               <option value="16:00">16:00</option>
+               <option value="16:30">16:30</option>
+               <option value="17:00">17:00</option>
+               <option value="17:30">17:30</option>
+               <option value="18:00">18:00</option>
+             </select>
+             <span >TO</span>
+             <select style="width: 80" id="ThursdayEndTut">
+               <option selected="">time</option>
+               <option value="8:30">8:30</option>
+               <option value="9:00">9:00</option>
+               <option value="9:30">9:30</option>
+               <option value="10:00">10:00</option>
+               <option value="10:30">10:30</option>
+               <option value="11:00">11:00</option>
+               <option value="11:30">11:30</option>
+               <option value="12:00">12:00</option>
+               <option value="12:30">12:30</option>
+               <option value="13:00">13:00</option>
+               <option value="13:30">13:30</option>
+               <option value="14:00">14:00</option>
+               <option value="14:30">14:30</option>
+               <option value="15:00">15:00</option>
+               <option value="15:30">15:30</option>
+               <option value="16:00">16:00</option>
+               <option value="16:30">16:30</option>
+               <option value="17:00">17:00</option>
+               <option value="17:30">17:30</option>
+               <option value="18:00">18:00</option>
+               <option value="18:30">18:00</option>
+               <option value="19:00">18:00</option>
+
+             </select>
+
+           </div>
+          </div>
+          <div>
+           <span style="display: block;padding-left: 5%;">Friday</span>
+           <select style="width: 80;" id="FridayStart">
+             <option selected="">time</option>
+             
+             <option value="8:00">8:00</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+           </select>
+           <span>TO</span>
+           <select style="width: 80;" id="FridayEnd">
+             <option selected="">time</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+             <option value="18:30">18:00</option>
+             <option value="19:00">18:00</option>
+
+           </select>
+           <div>
+           <select style="width: 80" id="FridayStartLab">
+             <option selected="">time</option>
+             
+             <option value="8:00">8:00</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+           </select>
+           <span >TO</span>
+           <select style="width: 80" id="FridayEndLab">
+             <option selected="">time</option>
+             <option value="8:30">8:30</option>
+             <option value="9:00">9:00</option>
+             <option value="9:30">9:30</option>
+             <option value="10:00">10:00</option>
+             <option value="10:30">10:30</option>
+             <option value="11:00">11:00</option>
+             <option value="11:30">11:30</option>
+             <option value="12:00">12:00</option>
+             <option value="12:30">12:30</option>
+             <option value="13:00">13:00</option>
+             <option value="13:30">13:30</option>
+             <option value="14:00">14:00</option>
+             <option value="14:30">14:30</option>
+             <option value="15:00">15:00</option>
+             <option value="15:30">15:30</option>
+             <option value="16:00">16:00</option>
+             <option value="16:30">16:30</option>
+             <option value="17:00">17:00</option>
+             <option value="17:30">17:30</option>
+             <option value="18:00">18:00</option>
+             <option value="18:30">18:00</option>
+             <option value="19:00">18:00</option>
+
+           </select>
+
+         </div>
+
+         <div>
+             <select style="width: 80" id="FridayStartTut">
+               <option selected="">time</option>
+               
+               <option value="8:00">8:00</option>
+               <option value="8:30">8:30</option>
+               <option value="9:00">9:00</option>
+               <option value="9:30">9:30</option>
+               <option value="10:00">10:00</option>
+               <option value="10:30">10:30</option>
+               <option value="11:00">11:00</option>
+               <option value="11:30">11:30</option>
+               <option value="12:00">12:00</option>
+               <option value="12:30">12:30</option>
+               <option value="13:00">13:00</option>
+               <option value="13:30">13:30</option>
+               <option value="14:00">14:00</option>
+               <option value="14:30">14:30</option>
+               <option value="15:00">15:00</option>
+               <option value="15:30">15:30</option>
+               <option value="16:00">16:00</option>
+               <option value="16:30">16:30</option>
+               <option value="17:00">17:00</option>
+               <option value="17:30">17:30</option>
+               <option value="18:00">18:00</option>
+             </select>
+             <span >TO</span>
+             <select style="width: 80" id="FridayEndTut">
+               <option selected="">time</option>
+               <option value="8:30">8:30</option>
+               <option value="9:00">9:00</option>
+               <option value="9:30">9:30</option>
+               <option value="10:00">10:00</option>
+               <option value="10:30">10:30</option>
+               <option value="11:00">11:00</option>
+               <option value="11:30">11:30</option>
+               <option value="12:00">12:00</option>
+               <option value="12:30">12:30</option>
+               <option value="13:00">13:00</option>
+               <option value="13:30">13:30</option>
+               <option value="14:00">14:00</option>
+               <option value="14:30">14:30</option>
+               <option value="15:00">15:00</option>
+               <option value="15:30">15:30</option>
+               <option value="16:00">16:00</option>
+               <option value="16:30">16:30</option>
+               <option value="17:00">17:00</option>
+               <option value="17:30">17:30</option>
+               <option value="18:00">18:00</option>
+               <option value="18:30">18:00</option>
+               <option value="19:00">18:00</option>
+
+             </select>
+
+           </div>
+          </div>
+   
+
+
+
+   </div>
+   <button onclick="saveToDatabase()">save</button>
+</div>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="app.js"></script>
+    <script src=https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    
+<script src = "teacher.js">
+    
+    
+
+
+</script>
+    </html>
+

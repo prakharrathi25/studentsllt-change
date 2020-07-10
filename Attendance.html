@@ -1,0 +1,77 @@
+<html>
+    <h2>Attendence</h2>
+    <body>
+        <div id ="main" style="display: none;">
+        <div>
+            Today's attendance<br>
+            <input type="text" placeholder="course name" id="courseName"/>
+        </div>
+        <div>
+            missed<br>
+            <input type="checkbox"  id ="LectureMissed" value="Lecture">
+            <label for="Lecture">Lecture</label><br>
+            <input type="checkbox"  id ="LabMissed" value="Lab">
+            <label for="Lab">Lab</label><br>
+            <input type="checkbox"  id ="TuteMissed" value="Tute">
+            <label for="Tute">Tute</label><br>
+           
+
+        </div>
+        <div>
+            condoned<br>
+            <input type="checkbox"  id ="LectureCondoned" value="Lecture">
+            <label for="Lecture">Lecture</label><br>
+            <input type="checkbox"  id ="LabCondoned" value="Lab">
+            <label for="Lab">Lab</label><br>
+            <input type="checkbox"  id ="TuteCondoned" value="Tute">
+            <label for="Tute">Tute</label><br>
+            
+            
+        </div>
+        <div>
+            No class<br>
+            <input type="checkbox"  id ="LectureNA" value="Lecture">
+            <label for="Lecture">Lecture</label><br>
+            <input type="checkbox"  id ="LabNA" value="Lab">
+            <label for="Lab">Lab</label><br>
+            <input type="checkbox"  id ="TuteNA" value="Tute">
+            <label for="Tute">Tute</label><br>
+          
+            
+        </div>
+        <div>
+            Extra class<br>
+            <input type="checkbox"  id ="LectureEx" value="Lecture">
+            <label for="Lecture">Lecture</label><br>
+            <input type="checkbox"  id ="LabEx" value="Lab">
+            <label for="Lab">Lab</label><br>
+            <input type="checkbox"  id ="TuteEx" value="Tute">
+            <label for="Tute">Tute</label><br>
+          
+            
+        </div>
+        <div>
+            Holiday<br>
+            <input type="checkbox"  id ="HolidayYes" value="Lecture">
+            <label for="HolidayYes">Yes</label><br>
+            <input type="checkbox"  id ="HolidayNo" value="Lab">
+            <label for="HolidayNo">No</label><br>
+            
+            <div>
+
+            </div>
+            
+        </div>
+
+        <button onclick="run()">done</button>
+        <button onclick="checkForAttendance()">Move To Attendance Checker</button>
+        <input type="date" id ="date" />
+    </div>
+
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="app.js"></script>
+    <script src=https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script src="Attendance.js"></script>
+</html>

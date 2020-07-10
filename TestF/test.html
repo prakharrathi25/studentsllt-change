@@ -1,0 +1,24 @@
+<html>
+    <body>
+        Dolannnn trumpuuu
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="app.js"></script>
+    <script src=https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script>
+        var monday = new Object();
+        monday.Lecture = "10-11";
+        monday.Lab = "11-12";
+        firebase.database().ref("/Testing").set({
+            Monday:monday
+        }).then(function(){
+            firebase.database().ref("/Testing").once('value').then(function(snap){
+                snap.forEach(function(subSnap){
+                    console.log(subSnap.val().Lab)
+                })
+            })
+        })
+        
+    </script>
+</html>
