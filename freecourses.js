@@ -25,7 +25,7 @@ function findFreeTime(timings) {
     TotalSlots = 20;
     FreeTimings = [];
 
-    BusyTimings = BreakTimings(timings); // breaks all the timings of the user into 1/2 hour slots
+    BusyTimings = BreakTimingsNew(timings); // breaks all the timings of the user into 1/2 hour slots
 
     start = "8:00"; end = "8:30";
     for (i = 0; i <= 20; ++i) { // 20 strings of the form "8:00-8:30", "8:30-9:00" are compared with all the 1/2 hour slots of the user

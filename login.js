@@ -8,7 +8,9 @@ firebase.auth().onAuthStateChanged(function(user){
     }
 
 })
-
+function FreeCourses(){
+    window.location.href = "freecourses.html";
+}
 function login(){
     var email = document.getElementById("email").value
     var password = document.getElementById('password').value;
